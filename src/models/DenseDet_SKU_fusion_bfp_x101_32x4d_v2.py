@@ -188,23 +188,27 @@ test_pipeline = [
             dict(type='Collect', keys=['img']),
         ])
 ]
+classes=('object',)
 data = dict(
     imgs_per_gpu=1,
     workers_per_gpu=1,
     train=dict(
         type=dataset_type,
-        ann_file='/DATA/home/tianzerong/sku/SKU_COCO_train.json',
-        img_prefix='/DATA/data/SKU110K_fixed/images/',
+        ann_file='/content/gdrive/MyDrive/Datasets/sku110/annotations/train.json',
+        img_prefix='/content/gdrive/MyDrive/Datasets/sku110/images/train/',
+        classes=classes,
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file='/DATA/home/tianzerong/sku/SKU_COCO_train.json',
-        img_prefix='/DATA/data/SKU110K_fixed/images/',
+        ann_file='/content/gdrive/MyDrive/Datasets/sku110/annotations/val.json',
+        img_prefix='/content/gdrive/MyDrive/Datasets/sku110/images/val/',
+        classes=classes,
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file='/DATA/home/tianzerong/sku/SKU_COCO_val.json',
-        img_prefix='/DATA/data/SKU110K_fixed/images/',
+        ann_file='/content/gdrive/MyDrive/Datasets/sku110/annotations/test.json',
+        img_prefix='/content/gdrive/MyDrive/Datasets/sku110/images/test/',
+        classes=classes,
         pipeline=test_pipeline))
 # optimizer
 optimizer = dict(type='SGD', lr=0.02, momentum=0.9, weight_decay=0.0001)
